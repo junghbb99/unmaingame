@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed = 3;
+    public GameObject BulletPrefab;
     Vector3 move;
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,8 @@ public class PlayerController : MonoBehaviour
             GetComponent<Animator>().SetTrigger("Stop");
         }
 
+ 
+
         move = move.normalized;
         if (move.x < 0)
         {
@@ -57,6 +60,15 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }
+        if (Input.GetMouseButtonDown(0))
+                 {
+                     Shoot();
+                 }
+    }
+
+    void Shoot()
+    {
+        
     }
 
     private void FixedUpdate()
