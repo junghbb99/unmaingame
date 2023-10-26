@@ -68,7 +68,10 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        
+        GameObject newBullet = Instantiate<GameObject>(BulletPrefab);
+        newBullet.transform.position = transform.position + new Vector3(0, -0.5f);
+        newBullet.GetComponent<Bullet>().Direction = new Vector2(1, 0);
+
     }
 
     private void FixedUpdate()
