@@ -66,16 +66,22 @@ public class PlayerController : MonoBehaviour
                  }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     void Shoot()
     {
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log(worldPosition);
+        worldPosition.z = 0;
+        worldPosition  -= (transform.position + new Vector3(0, -0.5f,0));
+        
         GameObject newBullet = Instantiate<GameObject>(BulletPrefab);
-        newBullet.transform.position = transform.position + new Vector3(0, -0.5f);
-        newBullet.GetComponent<Bullet>().Direction = new Vector2(1, 0);
+        newBullet.transform.position = transform.position + new Vector3(0,-0.5f);
+        newBullet.GetComponent<Bullet>().Direction = worldPosition;
 
     }
 
     private void FixedUpdate()
     {
-        transform.Translate(move * speed * Time.deltaTime);
+        transform.Translate(move * (speed * Time.deltaTime));
     }
 }
