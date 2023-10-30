@@ -122,12 +122,13 @@ public class PlayerController : MonoBehaviour
         
     }
     
+    // 설명: 플레이어가 총알에 맞으면 깜빡인다.
     void FIash()
     {
         GetComponent<SpriteRenderer>().material = flashMaterial;
         Invoke("AfterFIash", 0.5f);
     }
-
+    // 설명: 플레이어가 총알에 맞으면 깜빡인다.
     void AfterFIash()
     {
         GetComponent<SpriteRenderer>().material = defaultMaterial;

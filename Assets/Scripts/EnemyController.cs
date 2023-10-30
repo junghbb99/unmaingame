@@ -93,17 +93,18 @@ public class EnemyController : MonoBehaviour
           
         }
     }
-
+    // 설명: 적이 총알에 맞으면 깜빡인다.
     void FIash()
     {
         GetComponent<SpriteRenderer>().material = flashMaterial;
         Invoke("AfterFIash", 0.5f);
     }
-
+    // 설명: 적이 총알에 맞으면 깜빡인다.
     void AfterFIash()
     {
         GetComponent<SpriteRenderer>().material = defaultMaterial;
     }
+    // 설명: 적이 총알에 맞으면 죽는다.
     void Die()
     {
         
