@@ -38,9 +38,9 @@ public class ObjectPool : MonoBehaviour
             // 설명: 오브젝트가 비활성화되어 있으면 반환한다.
             if (!obj.activeInHierarchy)
             {
-                // 설명: 오브젝트를 반환한다.
+              
                 obj.SetActive(true);
-                // 설명: 오브젝트를 반환한다.
+          
                 return obj;
             }
         }

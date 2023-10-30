@@ -28,11 +28,25 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-        target = GameObject.Find("Player");
-        state = State.Moving;
+
     }
-    //설명: 적이 플레이어를 향해 이동한다.
- 
+
+    public void Spawn(GameObject target)
+    {
+        this.target = target;
+        state = State.Spawning;
+        GetComponent<Character>().Initialize();
+        GetComponent<Animator>().SetTrigger("Spawn");
+        Invoke("StartMoving", 1);
+        GetComponent<Collider2D>().enabled = false;
+    }
+    
+    void StartMoving()
+    {
+        state = State.Moving;
+        GetComponent<Collider2D>().enabled = true;
+    }
+
     private void FixedUpdate()
     {
         // 적이 플레이어를 향해 이동한다.
@@ -102,6 +116,6 @@ public class EnemyController : MonoBehaviour
     void AfterDying()
     {
         // 죽은 후 처리
-       Destroy(gameObject);
+       gameObject.SetActive(false);
     }
 }

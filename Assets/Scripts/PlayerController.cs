@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 3;
     // 설명: 총알의 프리팹을 나타낸다.
     public GameObject BulletPrefab;
+    
+    public Material flashMaterial;
+    public Material defaultMaterial;
     // 설명: 총알의 발사 속도를 나타낸다.
     Vector3 move;
     // Start is called before the first frame update
@@ -103,4 +107,44 @@ public class PlayerController : MonoBehaviour
         // 설명: 플레이어를 이동시킨다.
         transform.Translate(move * (speed * Time.deltaTime));
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (GetComponent<Character>().Hit(1))
+        {
+            FIash();
+        }
+        else
+        {
+            Die();
+        }
+        
+        
+    }
+    
+    void FIash()
+    {
+        GetComponent<SpriteRenderer>().material = flashMaterial;
+        Invoke("AfterFIash", 0.5f);
+    }
+
+    void AfterFIash()
+    {
+        GetComponent<SpriteRenderer>().material = defaultMaterial;
+    }
+    void Die()
+    {
+        
+   
+        // 죽는 애니메이션 재생
+        GetComponent<Animator>().SetTrigger("Die");
+        Invoke("AfterDying", 0.075f);
+    }
+    
+    void AfterDying()
+    {
+        // 죽은 후 처리
+        //gameObject.SetActive(false);
+    }
 }
+
