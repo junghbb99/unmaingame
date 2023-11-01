@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public class PlayerController : MonoBehaviour
@@ -144,8 +145,7 @@ public class PlayerController : MonoBehaviour
     
     void AfterDying()
     {
-        // 죽은 후 처리
-        //gameObject.SetActive(false);
+        SceneManager.LoadScene("GameOverScene");
     }
 }
 
