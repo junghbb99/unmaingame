@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
     
     void AfterDying()
     {
+        // 설명: 게임 오버 씬으로 이동한다.
         SceneManager.LoadScene("GameOverScene");
     }
 }
