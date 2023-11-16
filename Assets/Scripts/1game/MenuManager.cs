@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-
-
     public void OnPressGameStart()
     {
         SceneManager.LoadScene("GameScene");
@@ -17,5 +15,4 @@ public class MenuManager : MonoBehaviour
         // 설명: 게임을 종료한다.
         Application.Quit();
     }
-
 }
